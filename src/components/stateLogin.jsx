@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Input from "./inpust.jsx";
+import { isEmail,isNotEmpty, hasMinLength, isEqualsToOtherValue } from "../util/validation.js";
 export default function Login() {
   const [entereValues, setEnteredValues] = useState({
     email: '',
@@ -11,7 +12,7 @@ export default function Login() {
     password:false
   });
   const emailIsInvalid = didEdit.email && !entereValues.email.includes('@') 
-
+  const passwrodIsInvalid = didEdit.password && !entereValues.password.trim . length < 6 ; 
   function handleSubmit(event) {
     event.preventDefault();
     console.log( entereValues);
@@ -50,12 +51,14 @@ export default function Login() {
          onBlur={() =>handleInputBlur('email')} 
           onChange={(event) => handleInputChange('email',event)} 
           value={entereValues.email}
+          error={emailIsInvalid}
           />
        
         <Input label = "password" id="password" type = "password" name="password" 
           onChange={(event) =>('password',event)} 
            onBlur={() =>handleInputBlur('password')}  
            value={entereValues.password}
+           error={passwrodIsInvalid}
           />
 
       </div>
