@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Input from "./inpust.jsx";
 export default function Login() {
   const [entereValues, setEnteredValues] = useState({
     email: '',
@@ -44,23 +45,19 @@ export default function Login() {
       <h2>Login</h2>
 
       <div className="control-row">
-        <div className="control no-margin">
-          <label htmlFor="email">Email</label>
-          <input id="email" type="email" name="email" 
-          onBlur={() =>handleInputBlur('email')} 
+
+        <Input label = "email" id="email" type = "email" name="email" 
+         onBlur={() =>handleInputBlur('email')} 
           onChange={(event) => handleInputChange('email',event)} 
-          value={entereValues.email}/>
+          value={entereValues.email}
+          />
+       
+        <Input label = "password" id="password" type = "password" name="password" 
+          onChange={(event) =>('password',event)} 
+           onBlur={() =>handleInputBlur('password')}  
+           value={entereValues.password}
+          />
 
-          <div className="control-error">{emailIsInvalid && <p>enter email address correctly </p>}</div>
-        </div>
-
-        <div className="control no-margin">
-          <label htmlFor="password">Password</label>
-          <input id="password" type="password" name="password"
-           onChange={(event) =>('password',event)} 
-           onBlur={() =>handleInputBlur('password')} 
-           value={entereValues.password}/>
-        </div>
       </div>
 
       <p className="form-actions">
